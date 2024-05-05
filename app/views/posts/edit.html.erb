@@ -1,0 +1,10 @@
+<h1>予定を編集してください</h1>
+<%= form_with model: @post do |form| %>
+  <div><%= form.label :title ,"タイトル" %> <br> <%= form.text_field :title,required:true,maxlength:20 %></div>
+  <div><%= form.label :start_date ,"開始日" %> <br> <%= form.date_field :start_date,required:true %></div>
+  <div><%= form.label :end_date ,"終了日" %> <br> <%= form.date_field :end_date,required:true %></div>
+  <div><%= form.check_box :all_day %><%= form.label :all_day, "終日の場合はチェックを入れます" %></div>
+  <div><%= form.label :memo ,"スケジュールメモ" %> <br> <%= form.text_area :memo,maxlength:500 %></div>
+  <div><%= form.submit "保存" %></div> 
+  <div><%= link_to "キャンセル", :posts %></div>
+<% end %>
