@@ -1,2 +1,4 @@
 module ApplicationHelper
-end
+    # app/helpers/application_helper.rb
+  end
+  
