@@ -1,26 +1,26 @@
 class PostsController < ApplicationController
     def index
-        @posts = Post.all
+      @posts = Post.all
     end
 
     def new
-        @post = Post.new
+      @post = Post.new
     end
 
     def create
-     @post = Post.new(params.require(:post).permit(:title, :start_date, :end_date, :all_day, :memo ))
-     if @post.save
+      @post = Post.new(params.require(:post).permit(:title, :start_date, :end_date, :all_day, :memo ))
+      if @post.save
         flash[:notice] = "スケジュールを登録しました"
         redirect_to :posts
       
-     else
-      render "new"
-      flash[:notice] = "登録に失敗しました"
-     end
+      else
+        render "new"
+        flash[:notice] = "登録に失敗しました"
+      end
     end
 
     def show
-        @post = Post.find(params[:id])
+      @post = Post.find(params[:id])
     end
 
     def edit
@@ -28,20 +28,20 @@ class PostsController < ApplicationController
     end
 
     def update
-        @post = Post.find(params[:id])
-        if @post.update(params.require(:post).permit(:title, :start_date, :end_date, :all_day, :memo))
-            flash[:notice] = "スケジュールを更新しました"
-            redirect_to :posts
-        else
-            render:edit
-            flash[:notice] ="更新に失敗しました"
-        end
+      @post = Post.find(params[:id])
+      if @post.update(params.require(:post).permit(:title, :start_date, :end_date, :all_day, :memo))
+          flash[:notice] = "スケジュールを更新しました"
+          redirect_to :posts
+      else
+          render:edit
+          flash[:notice] ="更新に失敗しました"
+      end
     end
 
     def destroy
-        @post = Post.find(params[:id])
-        @post.destroy
-        flash[:notice] = "スケジュールを削除しました"
-        redirect_to :posts
+      @post = Post.find(params[:id])
+      @post.destroy
+      flash[:notice] = "スケジュールを削除しました"
+      redirect_to :posts
     end
 end
